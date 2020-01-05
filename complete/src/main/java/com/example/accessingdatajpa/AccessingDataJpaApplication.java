@@ -6,6 +6,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.transaction.annotation.Transactional;
 
 @SpringBootApplication
 public class AccessingDataJpaApplication {
@@ -14,6 +15,11 @@ public class AccessingDataJpaApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(AccessingDataJpaApplication.class);
+	}
+
+	@Transactional
+	public static void customerService(){
+		
 	}
 
 	@Bean
@@ -29,13 +35,13 @@ public class AccessingDataJpaApplication {
 			// fetch all customers
 			log.info("Customers found with findAll():");
 			log.info("-------------------------------");
-			for (Customer customer : repository.findAll()) {
+			for (OldCustomer customer : repository.findAll()) {
 				log.info(customer.toString());
 			}
 			log.info("");
 
 			// fetch an individual customer by ID
-			Customer customer = repository.findById(1L);
+			OldCustomer customer = repository.findById(1L);
 			log.info("Customer found with findById(1L):");
 			log.info("--------------------------------");
 			log.info(customer.toString());

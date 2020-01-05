@@ -5,8 +5,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+
+
 @Entity
-public class Customer {
+public class Customer extends OldCustomer{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
